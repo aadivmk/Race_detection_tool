@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | RaceDetector</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-microchip"></i>
+                <span>RaceDetector</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 100px 20px 80px;">
+
+        <!-- Stats Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-bug"></i></div>
+                <div class="stat-number" id="total-analyses">0</div>
+                <div>Total Analyses</div>
+            </div>
+            <div class="stat-card high-risk">
+                <div class="stat-icon"><i class="fas fa-exclamation"></i></div>
+                <div class="stat-number" id="high-risk">0</div>
+                <div>High Risk</div>
+            </div>
+            <div class="stat-card medium-risk">
+                <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="stat-number" id="medium-risk">0</div>
+                <div>Medium Risk</div>
+            </div>
+            <div class="stat-card safe">
+                <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="stat-number" id="safe-analyses">0</div>
+                <div>Safe Code</div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="analyzer-section">
+            <div class="section-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Analysis History</h2>
+            </div>
+
+            <div id="history-list" class="history-grid">
+                <!-- Dynamic history loaded via API -->
+                <div class="no-data" id="no-data-msg">
+                    <i class="fas fa-history" style="font-size: 4rem; color: #94a3b8;"></i>
+                    <h3>No Analysis History</h3>
+                    <p>Run your first analysis to see results here</p>
+                    <a href="analyzer.html" class="btn btn-primary">Start Analysis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo"><i class="fas fa-microchip"></i> RaceDetector</div>
+                    <p>Advanced race condition detection for modern multithreaded applications</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="analyzer.html">Analyzer</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Race Condition Detection Tool. BTech CSE Operating Systems Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        async function loadDashboard() {
+            try {
+                const response = await fetch('http://localhost:5000/api/history');
+                if (!response.ok) throw new Error('Server error');
+                const history = await response.json();
+                displayHistory(history);
+                updateStats(history);
+            } catch (error) {
+                console.error('Failed to load history:', error);
+                document.getElementById('no-data-msg').innerHTML = `
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #f59e0b;"></i>
+                    <h3>Could not connect to backend</h3>
+                    <p>Make sure the Flask server is running on port 5000</p>
+                `;
+            }
+        }
+
+        function displayHistory(history) {
+            const container = document.getElementById('history-list');
+            if (!history || history.length === 0) return;
+
+            container.innerHTML = history.map(report => {
+                const severityLower = (report.severity || 'safe').toLowerCase();
+                const conflictCount = Array.isArray(report.conflicts) ? report.conflicts.length : 0;
+                const dateStr = report.created_at ? new Date(report.created_at).toLocaleString() : 'N/A';
+                return `
+                    <div class="history-card severity-${severityLower}">
+                        <div class="history-header">
+                            <span class="severity-badge severity-${severityLower}">${report.severity || 'Safe'}</span>
+                            <div class="history-actions">
+                                <button onclick="deleteReport(${report.id})" class="btn-sm danger" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="history-body">
+                            <div><strong>${conflictCount}</strong> conflict${conflictCount !== 1 ? 's' : ''} detected</div>
+                            <small>${dateStr}</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateStats(history) {
+            if (!history) return;
+            document.getElementById('total-analyses').textContent = history.length;
+            document.getElementById('high-risk').textContent = history.filter(r => r.severity === 'High').length;
+            document.getElementById('medium-risk').textContent = history.filter(r => r.severity === 'Medium').length;
+            document.getElementById('safe-analyses').textContent = history.filter(r => r.severity === 'Safe').length;
+        }
+
+        async function deleteReport(id) {
+            if (!confirm('Delete this report?')) return;
+            try {
+                const response = await fetch(`http://localhost:5000/api/history/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    loadDashboard();
+                } else {
+                    alert('Failed to delete report.');
+                }
+            } catch (e) {
+                alert('Could not connect to backend.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>

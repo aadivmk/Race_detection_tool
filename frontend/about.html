@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | RaceDetector</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Same navbar as index.html -->
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-microchip"></i>
+                <span>RaceDetector</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                <li class="nav-item"><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="hero" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 120px 0 80px;">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Race Condition Detection Tool</h1>
+                <p class="hero-subtitle">Professional solution for detecting and preventing concurrency bugs in multithreaded applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OS Concepts -->
+    <section class="features" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">Core OS Concepts</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-random"></i></div>
+                    <h3>Race Conditions</h3>
+                    <p>Concurrent access to shared resources without proper synchronization leading to unpredictable results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Mutual Exclusion</h3>
+                    <p>Ensuring only one thread can access critical section at a time using locks and semaphores</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Synchronization</h3>
+                    <p>Coordinating thread execution to maintain data consistency and program correctness</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bug-slash"></i></div>
+                    <h3>Deadlock Prevention</h3>
+                    <p>Detecting circular wait conditions and providing safe resource allocation strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section style="padding: 80px 0; background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="feature-card">
+                    <div style="font-size: 3rem; color: #2563eb; margin-bottom: 20px;">1</div>
+                    <h3>Define Threads</h3>
+                    <p>Specify multiple threads with their operations on shared resources</p>
+                </div>
+                <div class="feature-card">
+                    <div style="font-size: 3rem; color: #10b981; margin-bottom: 20px;">2</div>
+                    <h3>Analyze Conflicts</h3>
+                    <p>Algorithm detects Read-Write, Write-Read, and Write-Write conflicts</p>
+                </div>
+                <div class="feature-card">
+                    <div style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;">3</div>
+                    <h3>Get Solutions</h3>
+                    <p>Receive expert recommendations for mutex, semaphores, and atomic operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Same footer as index.html -->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo"><i class="fas fa-microchip"></i> RaceDetector</div>
+                    <p>Advanced race condition detection for modern multithreaded applications</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="analyzer.html">Analyzer</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Race Condition Detection Tool. BTech CSE Operating Systems Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

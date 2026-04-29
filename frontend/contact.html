@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | RaceDetector</title>
+    <meta name="description" content="Contact the RaceDetector team — a BTech CSE Operating Systems project.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-microchip"></i>
+                <span>RaceDetector</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="background: linear-gradient(135deg, #1e293b, #334155); padding: 120px 0 80px; min-height: auto;">
+        <div class="container">
+            <div class="hero-content" style="text-align: center;">
+                <h1 class="hero-title">Get In Touch</h1>
+                <p class="hero-subtitle">Questions about the project? Reach out to the development team.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="padding: 80px 20px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+
+            <!-- Project Info -->
+            <div class="analyzer-section">
+                <div class="section-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h2>About This Project</h2>
+                </div>
+                <p style="color: #64748b; margin-bottom: 25px; line-height: 1.8;">
+                    This tool was developed as a <strong>BTech CSE Operating Systems</strong> project to demonstrate
+                    race condition detection using static analysis and the Eraser Lockset algorithm visualization.
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: #f8fafc; border-radius: 10px;">
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #2563eb, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: #1e293b;">Course</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">Operating Systems — BTech CSE</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: #f8fafc; border-radius: 10px;">
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: #1e293b;">Technology Stack</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">Python Flask + Vanilla HTML/CSS/JS + SQLite</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: #f8fafc; border-radius: 10px;">
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #8b5cf6, #a78bfa); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: #1e293b;">Repository</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">Race-Condition-Detection-Tool</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links / How to Run -->
+            <div class="analyzer-section">
+                <div class="section-header">
+                    <i class="fas fa-terminal"></i>
+                    <h2>How To Run Locally</h2>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #1e293b; margin-bottom: 10px;">Backend (Flask)</h4>
+                    <div class="code-snippet">
+                        <pre><code>cd backend
+pip install -r requirements.txt
+python app.py</code></pre>
+                    </div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #1e293b; margin-bottom: 10px;">Frontend</h4>
+                    <div class="code-snippet">
+                        <pre><code># Open frontend/index.html in your browser
+# Or use a local server:
+python -m http.server 8080</code></pre>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; padding: 20px; border-radius: 12px; margin-top: 10px;">
+                    <strong><i class="fas fa-lightbulb"></i> Tip:</strong> Make sure the Flask backend is running on
+                    <strong>port 5000</strong> before using the Analyzer or Dashboard pages.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo"><i class="fas fa-microchip"></i> RaceDetector</div>
+                    <p>Advanced race condition detection for modern multithreaded applications</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="analyzer.html">Analyzer</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Race Condition Detection Tool. BTech CSE Operating Systems Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
