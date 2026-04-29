@@ -81,4 +81,4 @@ Open `frontend/index.html` in your browser.
 
 ## Author
 
-Made by [aadiv](https://github.com/aadivmk) — BTech OS Course Project
+Made by [aadiv,ayush](https://github.com/aadivmk) — BTech OS Course Project
